@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% autoescape off %}
+
+  <table>
+  {% for rida in sudoku %}
+    <tr>
+      {% for koht in rida %}
+        <td><input {% if koht != "" %}disabled{% endif %} maxlength="1" value="{{ koht }}"></td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+  </table>
+
+  {% endautoescape %}
+{% endblock %}
