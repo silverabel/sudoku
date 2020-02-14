@@ -1,17 +1,51 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  {% autoescape off %}
-
-  <table>
-  {% for rida in sudoku %}
-    <tr>
-      {% for koht in rida %}
-        <td><input {% if koht != "" %}disabled{% endif %} maxlength="1" value="{{ koht }}"></td>
-      {% endfor %}
-    </tr>
-  {% endfor %}
-  </table>
-
-  {% endautoescape %}
+<div class="row">
+  <div class="col-xl-3"></div>
+  <div class="col-xl-5">
+    <table>
+    {% for rida in sudoku %}
+      <tr>
+        {% for koht in rida %}
+          <td><input type="text" {% if koht != "" %} disabled value="{{ koht }}" {% endif %} maxlength="6" class="kast"></td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+    </table>
+  </div>
+  <div>
+    <p>Uus mäng</p>
+    <form action="{% url 'index' %}" method="POST">
+      {% csrf_token %}
+      <input name="eemaldatavateNumbriteArv" hidden value="36">
+      <input type="submit" value="Lihtne">
+    </form>
+    <form action="{% url 'index' %}" method="POST">
+      {% csrf_token %}
+      <input name="eemaldatavateNumbriteArv" hidden value="42">
+      <input type="submit" value="Keskmine">
+    </form>
+    <form action="{% url 'index' %}" method="POST">
+      {% csrf_token %}
+      <input name="eemaldatavateNumbriteArv" hidden value="50">
+      <input type="submit" value="Raske">
+    </form>
+    <form action="{% url 'index' %}" method="POST">
+      {% csrf_token %}
+      <input name="eemaldatavateNumbriteArv" hidden value="55">
+      <input type="submit" value="EKSPERT">
+    </form>
+    <form action="{% url 'index' %}" method="POST">
+      {% csrf_token %}
+      <input name="eemaldatavateNumbriteArv" type="number" min="0" max="81" value="{{ eemaldatavateNumbriteArv }}">
+      <input type="submit" value="Vali ise">
+    </form>
+    <br>
+    <input type="radio" disabled class="checked" name="märkmed" id="esimene" checked>Esimene<br>
+    <input type="radio" disabled name="märkmed" id="teine">Teine<br><br>
+    <button class="button" data-sharer="facebook" data-hashtag="sudok" 
+    data-url="https://silverabel.pythonanywhere.com/">Share on Facebook</button>
+  </div>
+</div>
 {% endblock %}

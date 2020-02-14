@@ -9,8 +9,13 @@ def index(request):
       a = sudoku[8][8]
     except:
       pass
-  sudok.eemaldaSudokustSuvaliseltNumbrid(sudoku, 45)
+  
+  try:
+    eemaldatavateNumbriteArv = int(request.POST['eemaldatavateNumbriteArv'])
+  except:
+    eemaldatavateNumbriteArv = 45
+  sudok.eemaldaSudokustSuvaliseltNumbrid(sudoku, eemaldatavateNumbriteArv)
 
-    
-  context = {'sudoku': sudoku}
+  context = {'sudoku': sudoku, 'eemaldatavateNumbriteArv': eemaldatavateNumbriteArv}
   return render(request, 'pages/index.html', context)
+
