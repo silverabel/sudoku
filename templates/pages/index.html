@@ -13,6 +13,10 @@
       </tr>
     {% endfor %}
     </table>
+    <div id="aeg">
+      <span id="minutid">00</span>:<!--
+      --><span id="sekundid">00</span>
+    </div>
   </div>
   <div>
     <p>Uus mäng</p>
@@ -43,9 +47,9 @@
     </form>
     <br>
     <input type="radio" disabled class="checked" name="märkmed" id="esimene" checked>Esimene<br>
-    <input type="radio" disabled name="märkmed" id="teine">Teine<br><br>
-    <button class="button" data-sharer="facebook" data-hashtag="sudok" 
-    data-url="https://silverabel.pythonanywhere.com/">Share on Facebook</button>
+    <input type="radio" disabled name="märkmed" id="teine">Teine
+    <p>Märkmete tegemise viisi saab muuta TABiga</p>
+    <p>Ruudu saab tühjaks teha ESCiga</p>
   </div>
 </div>
 {% endblock %}
