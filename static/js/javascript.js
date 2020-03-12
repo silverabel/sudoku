@@ -77,7 +77,7 @@ function muudaAega() {
     minutid += 1;
     sekundid = 0;
     document.getElementById("minutid").innerHTML = (minutid ? (minutid > 9 ? minutid : "0" + minutid) : "00");
-    document.getElementById("sekundid").innerHTML = 0;
+    document.getElementById("sekundid").innerHTML = "00";
   }
   else {
     document.getElementById("sekundid").innerHTML = (sekundid ? (sekundid > 9 ? sekundid : "0" + sekundid) : "00");
