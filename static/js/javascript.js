@@ -2,7 +2,7 @@ var kastKlassigaElemendid = document.getElementsByClassName("kast");
 
 var muudaMitmeSisestatudNumbriFonti = function() {
   this.style.fontSize = "0.8em";
-  this.style.paddingBottom = "24px";
+  this.style.paddingBottom = "22px";
   this.style.paddingLeft = "1px";
   this.style.textAlign = "left";
 };
@@ -46,7 +46,7 @@ var vahetaChecki = function(key) {
     }
     else {
       document.getElementById("teine").checked = true;
-        fookusesKast.style.paddingBottom = "24px";
+        fookusesKast.style.paddingBottom = "22px";
         fookusesKast.style.paddingLeft = "1px";
         fookusesKast.style.textAlign = "left";
         fookusesKast.style.fontSize = "0.8em";
@@ -72,7 +72,7 @@ document.addEventListener('keydown', teeFookusesKastTühjaks);
 var minutid = 0;
 var sekundid = 0;
 
-function muudaAega() {
+var muudaAega = function() {
   if (sekundid == 60) {
     minutid += 1;
     sekundid = 0;
@@ -87,5 +87,60 @@ function muudaAega() {
 }
 
 muudaAega();
+
+// lõpptulemuse kontrollimine
+var tulemuseKontroll = function() {
+    var korras = true;
+    var koht;
+    var tulemuseMassiiv = [];
+    for (koht = 0; koht < 81; koht++) {
+        tulemuseMassiiv.push(document.getElementsByClassName("kast")[koht].value);
+    }
+    var ridadeMassiiv = [];
+    var reaNumber;
+    for (reaNumber = 0; reaNumber < 9; reaNumber++) {
+        ridadeMassiiv[reaNumber] = tulemuseMassiiv.slice(reaNumber * 9, reaNumber * 9 + 9);
+    }
+
+    //ridade kontroll
+    var rida;
+    var number;
+    ridadeMassiiv.every(rida => {
+        if (korras == false) {return false;}
+        for (number = 1; number <= 9; number++) {
+            if (!rida.includes(number.toString())) {
+                korras = false;
+                return false;
+            }
+        }
+        return true;
+    })
+
+    // kolmeste kastide loomine
+    var kolmesteKastideMassiiv = [];
+    for (koht = 0; koht < 9; koht ++) {kolmesteKastideMassiiv[koht] = [];}
+    var reaNumber;
+    for (reaNumber = 0; reaNumber < 9; reaNumber++) {
+        for (koht = 0; koht < 9; koht++) {
+            kolmesteKastideMassiiv[3 * Math.floor(reaNumber / 3) + Math.floor(koht / 3)].push(ridadeMassiiv[reaNumber][koht]);
+        }
+    }
+    // kolmeste kastide kontroll
+    var kast;
+    kolmesteKastideMassiiv.every(kast => {
+        if (korras == false) {return false;}
+        for (number = 1; number <= 9; number++) {
+            if (!kast.includes(number.toString())) {
+                korras = false;
+                return false;
+            }
+        }
+        return true;
+    })
+
+
+    if (korras) {alert("Korras");}
+    else {alert("Noup");}
+}
 
 
