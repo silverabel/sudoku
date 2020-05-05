@@ -50,7 +50,14 @@
     <input type="radio" disabled name="märkmed" id="teine">Teine
     <p>Märkmete tegemise viisi saab muuta TABiga</p>
     <p>Ruudu saab tühjaks teha ESCiga</p>
-    <button onclick="tulemuseKontroll()">Valmis!</button>
+    <form action="{% url 'edetabel' %}" id="tulemuseSubmit" method="POST"> 
+      {% csrf_token %}
+      <input name="eemaldatavateNumbriteArv" hidden value="{{ eemaldatavateNumbriteArv }}">
+      <input name="lahendamisAeg" id="lahendamisAeg" hidden>
+      <input name="lahendajaNimi" id="lahendajaNimi" hidden>
+      <input type="button" onclick="tulemuseSubmit()" value="Valmis!">
+      <br><br><a href="edetabel" target="_blank">Edetabel</a>
+    </form>
   </div>
 </div>
 {% endblock %}

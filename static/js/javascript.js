@@ -73,6 +73,7 @@ var minutid = 0;
 var sekundid = 0;
 
 var muudaAega = function() {
+  sekundid += 1;
   if (sekundid == 60) {
     minutid += 1;
     sekundid = 0;
@@ -82,7 +83,7 @@ var muudaAega = function() {
   else {
     document.getElementById("sekundid").innerHTML = (sekundid ? (sekundid > 9 ? sekundid : "0" + sekundid) : "00");
   }
-  sekundid += 1;
+  
   setTimeout(muudaAega, 1000);
 }
 
@@ -139,8 +140,21 @@ var tulemuseKontroll = function() {
     })
 
 
-    if (korras) {alert("Korras");}
-    else {alert("Noup");}
+    if (korras) return true;
 }
 
+var tulemuseSubmit = function() {
+  if (!tulemuseKontroll()) {
+    alert("Noups");
+    return;
+  }
+
+  var lahendamisAeg = minutid * 60 + sekundid;
+  document.getElementById("lahendamisAeg").value = lahendamisAeg;
+  
+  document.getElementById("lahendajaNimi").value = prompt("Sisesta edetabeli jaoks oma nimi:")
+
+  document.getElementById("tulemuseSubmit").submit();
+
+}
 

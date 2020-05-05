@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  {% autoescape off %}
+  <div class="col-xl-3">
+    <a href="/">Uus mäng</a>
+  </div>
+  <div class="col-xl-4">
+      {% for rida in edetabeliEsimenePool %}
+        {{ rida }}
+      {% endfor %}
+  </div>
+  <div class="col-xl-2">
+    {% for rida in edetabeliTeinePool %}
+      {{ rida }}
+    {% endfor %}
+  </div>
+  
+  {% endautoescape%}
+</div>
+{% endblock %}
