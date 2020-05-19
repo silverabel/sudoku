@@ -155,6 +155,33 @@ var tulemuseSubmit = function() {
   document.getElementById("lahendajaNimi").value = prompt("Sisesta edetabeli jaoks oma nimi:")
 
   document.getElementById("tulemuseSubmit").submit();
-
 }
 
+var muudaTausta = function(selectElement) {
+  if (selectElement.value == "Valge") document.body.style.backgroundImage = "none";
+  else {
+    var pildiURL = "../static/images/background/" + selectElement.value + ".png";
+    document.body.style.backgroundImage = "url(" + pildiURL + ")";
+  }
+}
+
+var muudaMuinasjuttu = function(selectElement) {
+  var muinasjuttSourceElement = document.getElementById("muinasjuttSource");
+
+  var muinasjuttURL = "https://tigu.hk.tlu.ee/~silver.abel/Sudoku/" + selectElement.value + ".mp3";
+  muinasjuttSourceElement.src = muinasjuttURL;
+
+  document.getElementById("muinasjuttAudio").load();
+  document.getElementById("muinasjuttAudio").play();
+}
+
+var vahetaLaulu = function() {
+  var taustamuusikaSourceElement = document.getElementById("taustamuusikaSource");
+  var laulunumber = Number(taustamuusikaSourceElement.src.charAt(taustamuusikaSourceElement.src.length - 5));
+  if (laulunumber == 5) laulunumber = 1;
+  else laulunumber += 1;
+  var taustamuusikaURL = "../static/sounds/music/" + laulunumber + ".mp3";
+  taustamuusikaSourceElement.src = taustamuusikaURL;
+  document.getElementById("taustamuusikaAudio").load();
+  document.getElementById("taustamuusikaAudio").play();
+}

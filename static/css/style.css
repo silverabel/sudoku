@@ -1,3 +1,7 @@
+:root {
+  --valgeTaust: #ffffffc7;
+}
+
 input.kast {
   text-align: center;
   width: 100%;
@@ -8,6 +12,12 @@ input.kast {
   color: transparent;
   text-shadow: 0 0 0 black;
   cursor: default;
+
+  background-color: transparent;
+}
+
+input:disabled {
+  background-color: #00000024;
 }
 
 .container {
@@ -19,6 +29,8 @@ table {
   table-layout: fixed;
   width: 450px;
   border: 3px solid;
+
+  background-image: linear-gradient(to right, #ffffffd1, transparent);
 }
 
 td {
@@ -36,10 +48,45 @@ td:nth-of-type(3n) {
   border-right: 2px solid;
 }
 
-input:disabled {
-  background-color: #ebebe47a;
-}
 
 #aeg {
   float:right;
 }
+
+body {
+  background-image: url('../images/background/Eesti.png');
+  background-size: cover;
+
+  color: black;
+}
+
+.valgeTaustaga1 {
+  background-image: linear-gradient(to right, transparent, var(--valgeTaust));
+}
+
+.valgeTaustaga2 {
+  background-color: var(--valgeTaust);
+}
+
+.valgeTaustaga3 {
+  width: 150px;
+  
+  background-image: linear-gradient(to right, var(--valgeTaust), transparent);
+}
+
+audio {
+  width: 150px;
+}
+
+audio::-webkit-media-controls-current-time-display {
+  display: none !important;
+}
+
+audio::-webkit-media-controls-time-remaining-display {
+  display: none !important;
+}
+
+audio::-webkit-media-controls-timeline {
+  display: none;
+}
+

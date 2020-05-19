@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row">
   <div class="col-xl-3"></div>
-  <div class="col-xl-5">
+  <div class="col-xl-5 valgeTaustaga1">
     <table>
     {% for rida in sudoku %}
       <tr>
@@ -18,7 +18,7 @@
       --><span id="sekundid">00</span>
     </div>
   </div>
-  <div>
+  <div class="valgeTaustaga2">
     <p>Uus mäng</p>
     <form action="{% url 'index' %}" method="POST">
       {% csrf_token %}
@@ -48,7 +48,7 @@
     <br>
     <input type="radio" disabled class="checked" name="märkmed" id="esimene" checked>Esimene<br>
     <input type="radio" disabled name="märkmed" id="teine">Teine
-    <p>Märkmete tegemise viisi saab muuta TABiga</p>
+    <p>Märkmete tegemise viisi <br> saab muuta TABiga</p>
     <p>Ruudu saab tühjaks teha ESCiga</p>
     <form action="{% url 'edetabel' %}" id="tulemuseSubmit" method="POST"> 
       {% csrf_token %}
@@ -58,6 +58,31 @@
       <input type="button" onclick="tulemuseSubmit()" value="Valmis!">
       <br><br><a href="edetabel" target="_blank">Edetabel</a>
     </form>
+  </div>
+  <div class="valgeTaustaga3">
+    <select onchange="muudaTausta(this)">
+      <option disabled selected>Taust</option>
+      <option>Eesti</option>
+      <option>Prantsuse</option>
+      <option>Jaapani</option>
+      <option>Valge</option>
+    </select><br><br>
+
+    <select onchange="muudaMuinasjuttu(this)">
+      <option disabled selected>Muinasjutt</option>
+      <option>Eesti</option>
+      <option>Prantsuse</option>
+      <option>Jaapani</option>
+    </select><br>
+    <audio id="muinasjuttAudio" controls controlsList="nodownload">
+      <source id="muinasjuttSource" type="audio/mpeg">
+    </audio><br><br>
+    
+    Taustamuusika<br>
+    <audio id="taustamuusikaAudio" controls controlsList="nodownload">
+      <source id="taustamuusikaSource" src="../static/sounds/music/1.mp3" type="audio/mpeg">
+    </audio>
+    <button onclick="vahetaLaulu()">Järgmine laul</button>
   </div>
 </div>
 {% endblock %}

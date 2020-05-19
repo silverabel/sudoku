@@ -3,15 +3,15 @@
 {% block content %}
 <div class="row">
   {% autoescape off %}
-  <div class="col-xl-3">
-    <a href="/">Uus mäng</a>
+  <div class="col-xl-3 valgeTaustaga1" style="text-align: right">
+    <a href="/" style="color: #003f82">Uus mäng</a>
   </div>
-  <div class="col-xl-4">
+  <div class="col-xl-4 valgeTaustaga2">
       {% for rida in edetabeliEsimenePool %}
         {{ rida }}
       {% endfor %}
   </div>
-  <div class="col-xl-2">
+  <div class="col-xl-2 valgeTaustaga3">
     {% for rida in edetabeliTeinePool %}
       {{ rida }}
     {% endfor %}
